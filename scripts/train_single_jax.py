@@ -46,7 +46,7 @@ class JaxCheckpointManager:
 
 # 强化版状态机：挂载 BatchNorm 统计量与热力学 RNG
 class IRLTrainState(train_state.TrainState):
-    batch_stats: jax.core.FrozenDict
+    batch_stats: dict
     rng: jax.Array
 
     def apply_gradients(self, *, grads, **kwargs):
