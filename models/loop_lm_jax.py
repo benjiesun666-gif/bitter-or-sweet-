@@ -12,7 +12,7 @@ class TransformerEncoderLayer(nn.Module):
     def __call__(self, x):
         # Self Attention (Norm First)
         x_norm = nn.LayerNorm()(x)
-        x_attn = nn.SelfAttention(num_heads=self.nhead)(x_norm, x_norm)
+        x_attn = nn.SelfAttention(num_heads=self.nhead)(x_norm)
         x = x + x_attn
 
         # Feed Forward (Norm First)
