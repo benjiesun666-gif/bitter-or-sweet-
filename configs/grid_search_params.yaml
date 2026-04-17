@@ -1,0 +1,25 @@
+# configs/grid_search_params.yaml
+model:
+  num_bin_channels: 22
+  num_global_channels: 19
+  d_model: 256
+  n_loops: 4
+  action_space: 362
+
+training:
+  max_steps: 200000
+  eval_interval: 500
+  save_interval: 10000
+  batch_size: 256
+  entropy_temp: 0.1
+  optimizer_type: "AdamW"
+  sgld_noise_std: 0.001
+
+grid_search:
+  learning_rates: [0.001, 0.0005, 0.0001]
+  weight_decays: [0.1, 0.5, 1.0, 2.0]
+
+data:
+  train_split: 400
+  hpo_val_split: 100
+  test_split: "rest"
