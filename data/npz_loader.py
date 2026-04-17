@@ -81,8 +81,8 @@ def get_dataloaders(data_dir: str, config: dict) -> Tuple[DataLoader, DataLoader
     test_dataset = KataGoOfflineDataset(test_files) if len(test_files) > 0 else None
 
     batch_size = config['training']['batch_size']
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, pin_memory=True, num_workers=2)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=2)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=2) if test_dataset else None
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, pin_memory=False, num_workers=0)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, pin_memory=False, num_workers=0)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, pin_memory=False, num_workers=0) if test_dataset else None
 
     return train_loader, val_loader, test_loader
